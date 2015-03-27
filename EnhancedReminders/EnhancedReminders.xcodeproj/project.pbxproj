@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6659BEC81AC316A300C00D3E /* THDReminderEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6659BEC61AC316A300C00D3E /* THDReminderEditController.m */; };
 		6659BEC91AC316A300C00D3E /* THDReminderEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6659BEC71AC316A300C00D3E /* THDReminderEditController.xib */; };
+		6A1B3E291AC5B6EF0044A407 /* THDReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B3E281AC5B6EF0044A407 /* THDReminderTableViewCell.m */; };
 		6A8BE8AE1AC1F10600616CAD /* THDReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8BE8AD1AC1F10600616CAD /* THDReminder.m */; };
 		6A915D9E1AB2305600A1BEEC /* THDOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A915D9D1AB2305600A1BEEC /* THDOptionsController.m */; };
 		6A915DA11AB2306900A1BEEC /* THDReminderDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A915DA01AB2306900A1BEEC /* THDReminderDetailsController.m */; };
@@ -42,6 +43,8 @@
 		6659BEC51AC316A300C00D3E /* THDReminderEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THDReminderEditController.h; path = ../THDReminderEditController.h; sourceTree = "<group>"; };
 		6659BEC61AC316A300C00D3E /* THDReminderEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THDReminderEditController.m; path = ../THDReminderEditController.m; sourceTree = "<group>"; };
 		6659BEC71AC316A300C00D3E /* THDReminderEditController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = THDReminderEditController.xib; path = ../THDReminderEditController.xib; sourceTree = "<group>"; };
+		6A1B3E271AC5B6EF0044A407 /* THDReminderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDReminderTableViewCell.h; sourceTree = "<group>"; };
+		6A1B3E281AC5B6EF0044A407 /* THDReminderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDReminderTableViewCell.m; sourceTree = "<group>"; };
 		6A8BE8AC1AC1F10600616CAD /* THDReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDReminder.h; sourceTree = "<group>"; };
 		6A8BE8AD1AC1F10600616CAD /* THDReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDReminder.m; sourceTree = "<group>"; };
 		6A915D9C1AB2305600A1BEEC /* THDOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDOptionsController.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				6A915DA01AB2306900A1BEEC /* THDReminderDetailsController.m */,
 				6A915DAE1AB2340B00A1BEEC /* THDReminderListController.h */,
 				6A915DAF1AB2340B00A1BEEC /* THDReminderListController.m */,
+				6A1B3E271AC5B6EF0044A407 /* THDReminderTableViewCell.h */,
+				6A1B3E281AC5B6EF0044A407 /* THDReminderTableViewCell.m */,
 				6AE3E2051AAF6429007C9CD2 /* Images.xcassets */,
 				6AE3E1FA1AAF6429007C9CD2 /* Supporting Files */,
 			);
@@ -281,6 +286,7 @@
 				6A915D9E1AB2305600A1BEEC /* THDOptionsController.m in Sources */,
 				6659BEC81AC316A300C00D3E /* THDReminderEditController.m in Sources */,
 				6AE3E2001AAF6429007C9CD2 /* main.m in Sources */,
+				6A1B3E291AC5B6EF0044A407 /* THDReminderTableViewCell.m in Sources */,
 				6A8BE8AE1AC1F10600616CAD /* THDReminder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

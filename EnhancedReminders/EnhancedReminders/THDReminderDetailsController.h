@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "THDReminder.h"
 
-@interface THDReminderDetailsController : UIViewController
+@interface THDReminderDetailsController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property THDReminder* reminder;
+
+-(id)initWithReminder:(THDReminder*)reminder;
 
 @end

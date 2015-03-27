@@ -15,11 +15,12 @@
 
 @implementation THDReminderDetailsController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithReminder:(THDReminder*)reminder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        // Custom initialization
+        _reminder = reminder;
     }
     return self;
 }
@@ -28,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setTitle:@"Details"];
+    [self setTitle:[_reminder title]];
     
     //Create Edit button on the right of the navigation bar
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed)];
@@ -45,19 +46,44 @@
 
 -(void)editButtonPressed
 {
-    UIViewController *controller = [[THDReminderEditController alloc] init];
-    [[self navigationController] pushViewController:controller animated:YES];
+//    UIViewController *controller = [[THDReminderEditController alloc] initWithReminder:_reminder];
+//    [[self navigationController] pushViewController:controller animated:YES];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Table view data source
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Return the number of sections.
+    return 1;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *myCellID = @"CellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellID];
+    
+    if(cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myCellID];
+    
+    switch([indexPath row]) {
+        case 0: [[cell textLabel] setText:[_reminder title]];
+            break;
+        case 1: [[cell textLabel] setText:[_reminder description]];
+            break;
+        case 2: [[cell textLabel] setText:[NSString stringWithFormat:@"%@", [_reminder after]]];
+            break;
+        case 3: [[cell textLabel] setText:[NSString stringWithFormat:@"%@", [_reminder before]]];
+            break;
+    }
+    
+    return cell;
+}
 
 @end

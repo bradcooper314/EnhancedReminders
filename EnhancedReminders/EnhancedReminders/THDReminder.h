@@ -13,10 +13,10 @@
 
 @property NSString *title;
 @property NSString *description;
-@property NSDate *begin;
-@property NSDate *end;
+@property NSDate *before;
+@property NSDate *after;
 @property MKMapItem *location;
 
--(id) initWithTitle:(NSString *)title description:(NSString *)description beginDate:(NSDate *)begin endDate:(NSDate *)end;
+-(id) initWithTitle:(NSString *)title description:(NSString *)description before:(NSDate *)before after:(NSDate *)after;
 
 @end

@@ -11,6 +11,7 @@
 #import "THDOptionsController.h"
 #import "THDReminderEditController.h"
 #import "THDReminder.h"
+#import "THDReminderTableViewCell.h"
 
 @interface THDReminderListController ()
 
@@ -23,16 +24,7 @@
 
 -(id)init
 {
-    return [self initWithStyle:UITableViewStylePlain];
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        //[self setEditing:YES animated:YES];
-    }
-    return self;
+    return [super initWithStyle:UITableViewStylePlain];
 }
 
 - (void)viewDidLoad
@@ -61,7 +53,7 @@
 
 -(void)createNewButtonPressed
 {
-    UIViewController *controller = [[THDReminderEditController alloc]init];
+    UIViewController *controller = [[THDReminderEditController alloc] init];
     [[self navigationController] pushViewController:controller animated:YES];
 }
 
@@ -94,27 +86,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *myCellID = @"CellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellID];
-    
-    if(cell == nil)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myCellID];
+    THDReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:myCellID];
     
     //configure cell
     THDReminder *reminder = [_reminders objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[reminder title]];
-    [[cell detailTextLabel] setText:[reminder description]];
-    [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
-    #warning Hook up images
-    //[[cell imageView] setImage:[UIImage imageNamed:@"puppy.jpg"]];
+    cell = [[THDReminderTableViewCell alloc] initWithReminder:reminder cellID:myCellID];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
+    THDReminderTableViewCell* cell = (THDReminderTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    
     //redirect to the THDReminderDetailsController initializing using the ID for the selected row
-    #warning Pass reminder over to details viewer
-    UIViewController *next = [[THDReminderDetailsController alloc] init];
+    UIViewController *next = [[THDReminderDetailsController alloc] initWithReminder:[cell reminder]];
     
     if(next != nil)
         [[self navigationController] pushViewController:next animated:YES];
@@ -133,9 +119,9 @@
     NSMutableArray* reminders = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     if(!reminders) {
         #warning Delete me when done testing
-        THDReminder* test1 = [[THDReminder alloc] initWithTitle:@"Reminder 1" description:@"Description 1" beginDate:[[NSDate alloc] initWithTimeIntervalSinceNow:120] endDate:nil];
-        THDReminder* test2 = [[THDReminder alloc] initWithTitle:@"Reminder 2" description:@"Description 2" beginDate:nil endDate:[[NSDate alloc] initWithTimeIntervalSinceNow:180]];
-        THDReminder* test3 = [[THDReminder alloc] initWithTitle:@"Reminder 3" description:@"Description 3" beginDate:[[NSDate alloc] initWithTimeIntervalSinceNow:90] endDate:[[NSDate alloc] initWithTimeIntervalSinceNow:150]];
+        THDReminder* test1 = [[THDReminder alloc] initWithTitle:@"Reminder 1" description:@"Description 1" before:[[NSDate alloc] initWithTimeIntervalSinceNow:120] after:nil];
+        THDReminder* test2 = [[THDReminder alloc] initWithTitle:@"Reminder 2" description:@"Description 2" before:nil after:[[NSDate alloc] initWithTimeIntervalSinceNow:180]];
+        THDReminder* test3 = [[THDReminder alloc] initWithTitle:@"Reminder 3" description:@"Description 3" before:[[NSDate alloc] initWithTimeIntervalSinceNow:90] after:[[NSDate alloc] initWithTimeIntervalSinceNow:150]];
         THDReminder* test4 = [[THDReminder alloc] init];
         reminders = [[NSMutableArray alloc] initWithObjects:test1, test2, test3, test4, nil];
     }
